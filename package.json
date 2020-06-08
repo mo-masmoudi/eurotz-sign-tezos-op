@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/DalyIng/eurotz-sign-tezos-op/issues"
   },
-  "homepage": "https://github.com/DalyIng/eurotz-sign-tezos-op#readme"
+  "homepage": "https://github.com/DalyIng/eurotz-sign-tezos-op#readme",
+  "dependencies": {
+    "blakejs": "^1.1.0",
+    "bs58check": "^2.1.2"
+  }
 }
