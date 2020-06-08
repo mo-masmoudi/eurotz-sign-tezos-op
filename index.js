@@ -1,7 +1,7 @@
-import { signOpDetached } from "./signOpOffline.minified";
-
 const blake = require("blakejs");
 const bs58check = require("bs58check");
+
+const signOpDetached = require("./signOpOffline.minified")
 
 const prefix = {
   edsk: new Uint8Array([43, 246, 78, 7]),
