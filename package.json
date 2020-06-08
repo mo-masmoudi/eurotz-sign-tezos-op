@@ -1,0 +1,26 @@
+{
+  "name": "eurotz-sign",
+  "version": "1.0.0",
+  "description": "Sign EuroTz operations on Tezos offline with a native JS package.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DalyIng/eurotz-sign-tezos-op.git"
+  },
+  "keywords": [
+    "EuroTz",
+    "Tezos",
+    "Signature",
+    "Javascript",
+    "Native"
+  ],
+  "author": "Mohamed Ali Masmoudi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DalyIng/eurotz-sign-tezos-op/issues"
+  },
+  "homepage": "https://github.com/DalyIng/eurotz-sign-tezos-op#readme"
+}
