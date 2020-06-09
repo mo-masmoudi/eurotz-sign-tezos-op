@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/DalyIng/eurotz-sign-tezos-op#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "blakejs": "^1.1.0",
     "bs58check": "^2.1.2"
   }
