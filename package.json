@@ -1,7 +1,7 @@
 {
   "name": "eurotz-sign",
   "version": "1.0.7",
-  "description": "EuroTz operations, mady with ♥ by MoMo",
+  "description": "EuroTz operations, made with ♥ by MoMo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
