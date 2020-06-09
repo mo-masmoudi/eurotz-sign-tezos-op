@@ -20,7 +20,7 @@ async function runScripts() {
   const senderNonce = await euroTzFunctions.getNonce(senderAddress);
   const senderBalance = await euroTzFunctions.getBalance(senderAddress);
 
-  const opBytes = euroTzFunctions.packEuroTzOp(
+  const opBytes = await euroTzFunctions.packEuroTzOp(
     amount,
     senderNonce,
     senderAddress,
