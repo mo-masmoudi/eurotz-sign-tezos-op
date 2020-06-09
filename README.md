@@ -7,26 +7,32 @@
 #### Example
 
 ```
-const sign = require("eurotz-sign");
-const getBalance = require("eurotz-sign");
-const getNonce = require("eurotz-sign");
+const euroTzFunctions = require("eurotz-sign");
 
 async function runScripts() {
-  const bytes =
-    "050707001807070509000a070700b2e10107070a00000016000085ef0c18b31983603d978a152de4cd61803db8810a0000001601e7e82a3798c9ffb74841ff93b77f3239f63db74100";
-  const secretKey =
-    "edskRj834H7r8xqHcYFimxReFdSfhsb2eGxJAUuvvb8jnfpP2j7bKTDRaYVyfGRsmkW8RjChhQSYx1EMSg4CiAzhtgHwF6HdHE";
+  const senderAddress = "tz1XrCvviH8CqoHMSKpKuznLArEa1yR9U7ep";
+  const receiverAddress = "tz1XvMBRHwmXtXS2K6XYZdmcc5kdwB9STFJu";
+  const senderSecretKey =
+    "edskRt2ibNbv4BNrn7FRXuYTwGF54oVAe8JuUuE8YVsvnc78GwpRvYk9ftmQKxQjeczGZwacGSdHWWXrLDWcYoq3EhiY5TuUtU";
+  const amount = 43;
+  const contractAddress = "KT1GVGz2YwuscuN1MEtocf45Su4xomQj1K8z";
 
-  const userAddress = "tz1XrCvviH8CqoHMSKpKuznLArEa1yR9U7ep";
+  const senderNonce = await euroTzFunctions.getNonce(senderAddress);
+  const senderBalance = await euroTzFunctions.getBalance(senderAddress);
 
-  const nonce = await getNonce(userAddress);
-  const balance = await getBalance(userAddress);
+  const opBytes = euroTzFunctions.packEuroTzOp(
+    amount,
+    senderNonce,
+    senderAddress,
+    receiverAddress,
+    contractAddress
+  );
+  const opSignature = euroTzFunctions.sign(opBytes, senderSecretKey);
 
-  const signature = sign(bytes, secretKey);
-
-  console.log("User Nonce: ", nonce);
-  console.log("User Balance: ", balance);
-  console.log("OP SIGNATURE: ", signature);
+  console.log("Sender Nonce: ", senderNonce);
+  console.log("Sender Balance: ", senderBalance);
+  console.log("Op Bytes: ", opBytes);
+  console.log("Op Signature: ", opSignature);
 }
 
 runScripts();

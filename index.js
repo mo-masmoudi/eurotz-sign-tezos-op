@@ -124,6 +124,78 @@ async function getNonce(address) {
 
 // ============================================================
 
+async function packEuroTzOp(amount, nonce, from_, to_, contractAddress) {
+  try {
+    const data = {
+      prim: "Pair",
+      args: [
+        { int: `${amount}` },
+        {
+          prim: "Pair",
+          args: [
+            { int: `${nonce}` },
+            {
+              prim: "Pair",
+              args: [
+                { string: from_ },
+                {
+                  prim: "Pair",
+                  args: [{ string: to_ }, { string: contractAddress }],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    };
+
+    const type = {
+      prim: "pair",
+      args: [
+        { prim: "int" },
+        {
+          prim: "pair",
+          args: [
+            { prim: "int" },
+            {
+              prim: "pair",
+              args: [
+                { prim: "address" },
+                {
+                  prim: "pair",
+                  args: [{ prim: "address" }, { prim: "address" }],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    };
+
+    const packedData = await axios.post(
+      `${conf.remoteNodeRPC}/chains/main/blocks/head/helpers/scripts/pack_data`,
+      {
+        data,
+        type,
+        gas: "800000",
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return packedData.data.packed;
+  } catch (e) {
+    throw e;
+  }
+}
+
+// ============================================================
+
+// ============================================================
+
 function sign(bytes, secretKey) {
   const bytesByffer = hex2buf(bytes);
   const genericHash = blake.blake2b(bytesByffer, null, 32);
@@ -144,5 +216,6 @@ function sign(bytes, secretKey) {
 module.exports = {
   sign,
   getBalance,
-  getNonce
-}
+  getNonce,
+  packEuroTzOp,
+};
