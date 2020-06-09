@@ -141,6 +141,8 @@ function sign(bytes, secretKey) {
 
 // === Exports
 
-module.exports = sign;
-module.exports = getBalance;
-module.exports = getNonce;
+module.exports = {
+  sign,
+  getBalance,
+  getNonce
+}
