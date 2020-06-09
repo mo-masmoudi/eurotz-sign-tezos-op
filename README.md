@@ -7,7 +7,7 @@
 #### Example
 
 ```
-const euroTzFunctions = require("eurotz-sign");
+const euroTz = require("eurotz-sign");
 
 async function runScripts() {
   const senderAddress = "tz1XrCvviH8CqoHMSKpKuznLArEa1yR9U7ep";
@@ -17,17 +17,17 @@ async function runScripts() {
   const amount = 43;
   const contractAddress = "KT1GVGz2YwuscuN1MEtocf45Su4xomQj1K8z";
 
-  const senderNonce = await euroTzFunctions.getNonce(senderAddress);
-  const senderBalance = await euroTzFunctions.getBalance(senderAddress);
+  const senderNonce = await euroTz.getNonce(senderAddress);
+  const senderBalance = await euroTz.getEuroTzBalance(senderAddress);
 
-  const opBytes = await euroTzFunctions.packEuroTzOp(
+  const opBytes = await euroTz.pack(
     amount,
     senderNonce,
     senderAddress,
     receiverAddress,
     contractAddress
   );
-  const opSignature = euroTzFunctions.sign(opBytes, senderSecretKey);
+  const opSignature = euroTz.sign(opBytes, senderSecretKey);
 
   console.log("Sender Nonce: ", senderNonce);
   console.log("Sender Balance: ", senderBalance);

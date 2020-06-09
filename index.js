@@ -3,7 +3,7 @@ const blake = require("blakejs");
 const bs58check = require("bs58check");
 
 const conf = require("./conf");
-const signOpDetached = require("./signOpOffline.minified");
+const signOpDetached = require("./lib");
 
 const prefix = {
   edsk: new Uint8Array([43, 246, 78, 7]),
@@ -39,7 +39,7 @@ function encodeExpr(value) {
 
 // ============================================================
 
-async function getBalance(address) {
+async function getEuroTzBalance(address) {
   try {
     const packedData = await axios.post(
       `${conf.remoteNodeRPC}/chains/main/blocks/head/helpers/scripts/pack_data`,
@@ -124,7 +124,7 @@ async function getNonce(address) {
 
 // ============================================================
 
-async function packEuroTzOp(amount, nonce, from_, to_, contractAddress) {
+async function pack(amount, nonce, from_, to_, contractAddress) {
   try {
     const data = {
       prim: "Pair",
@@ -215,7 +215,7 @@ function sign(bytes, secretKey) {
 
 module.exports = {
   sign,
-  getBalance,
+  getEuroTzBalance,
   getNonce,
-  packEuroTzOp,
+  pack,
 };
