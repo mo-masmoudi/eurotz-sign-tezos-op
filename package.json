@@ -1,6 +1,6 @@
 {
   "name": "eurotz-sign",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "EuroTz operations, mady with love ♥ by MoMo",
   "main": "index.js",
   "scripts": {
