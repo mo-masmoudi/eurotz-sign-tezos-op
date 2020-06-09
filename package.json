@@ -1,6 +1,6 @@
 {
   "name": "eurotz-sign",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Sign EuroTz operations on Tezos offline with a native JS package.",
   "main": "index.js",
   "scripts": {
